@@ -1,0 +1,128 @@
+\documentclass[
+    12pt,
+    a4paper,
+    oneside % Remove this if you print and bind it. 
+]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{eurosym}
+\usepackage{natbib}
+\usepackage{color}
+\usepackage{soul}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage[font=normalfont,labelfont=bf]{caption}
+\usepackage{subcaption}
+\usepackage{setspace} 
+\usepackage{appendix}
+\usepackage{etoolbox}
+\usepackage[clearempty]{titlesec}
+\usepackage[breaklinks=true, colorlinks=true, linkcolor=black, citecolor=black, pdfauthor={Author name}, pdftitle={Ph.D. Thesis Title}, pdfsubject={Dissertation No.}, pdfkeywords={},]{hyperref}
+% Comment this line out if you want to print and bind the document and use the line after
+\usepackage[left=1.2in,right=1.2in]{geometry}
+% \usepackage[outer=1.in,inner=1.4in]{geometry}
+\usepackage{dsfont}
+\usepackage{float}
+
+% I recommend some commands like this to get a uniform reference style across the document
+\newcommand{\equref}[1]{Eq.~\eqref{#1}}
+\newcommand{\secref}[1]{Chap.~\ref{#1}}
+\newcommand{\appref}[1]{App.~\ref{#1}}
+\newcommand{\figref}[1]{Fig.~\ref{#1}}
+
+% Abstracts for individual chapters
+\newenvironment{chapterabstract}{
+    \singlespacing 
+    \begin{center}
+    \textbf{Abstract}
+    \end{center}
+    \begin{quotation}
+    \noindent
+}{
+    \end{quotation}
+}
+
+\AtBeginEnvironment{subappendices}{%
+\chapter*{Appendix}
+\chaptermark{Appendix}
+\addcontentsline{toc}{chapter}{Appendices}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+}
+
+\onehalfspacing
+\title{
+    \normalsize{DISS. ETH NO. \_\_\_\_\_}\\
+    \Huge{\textsc{\\Ph.D. Thesis Title}}
+}
+\author{
+    \Large{A thesis submitted to attain the degree of } \\ 
+    \Large{\textsc{Doctor of Sciences} of \textsc{ETH Zurich}}\\ 
+    \Large{(Dr. sc. ETH Zurich)}\\\\ 
+    presented by \\ 
+    Name Surname \\
+    highest degree so far, awarding university, \\
+    born on day month year, \\
+    citizen of country, \\\\
+    accepted on the recommendation of \\ 
+    Prof. Dr. examiner 1 \\ 
+    Prof. Dr. examiner 2\\
+}
+\date{
+    % Year of the department conference that accepts your thesis and examination.
+    20\_\_
+}
+
+\begin{document}
+\maketitle 
+% This line might be needed for the proper print
+% \cleardoublepage
+\thispagestyle{empty} 
+\vspace{0cm}
+\pagenumbering{Roman}
+
+\chapter*{Thesis Summary} \addcontentsline{toc}{chapter}{Thesis Summary}
+\markboth{THESIS SUMMARY}{THESIS SUMMARY}
+Short summary of the thesis.
+
+\selectlanguage{ngerman}
+\chapter*{Zusammenfassung} \addcontentsline{toc}{chapter}{Zusammenfassung}
+\markboth{ZUSAMMENFASSUNG}{ZUSAMMENFASSUNG}
+Equivalent to the previous section in one of the official languages of Switzerland.
+
+\selectlanguage{english}
+\chapter*{Acknowledgments}
+Acknowledgements to everybody who help you in some way over the last years.
+
+{
+\singlespacing
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+
+\addtocontents{toc}{\protect\vspace{-0.cm}}
+\newpage
+\pagenumbering{arabic}\setcounter{page}{1}
+% Import all chapters
+\input{Chap1/main}
+
+\newpage
+% Store all references in one bib-tex file and avoid any duplicates
+\renewcommand{\bibname}{References}
+\bibliographystyle{unsrt}
+\bibliography{refs}
+\addcontentsline{toc}{chapter}{References}
+\chaptermark{References}
+
+\chapter*{Curriculum Vitae}
+\addcontentsline{toc}{chapter}{Curriculum Vitae}
+\chaptermark{Curriculum Vitae}
+\thispagestyle{empty}
+\noindent Born on day month year in city, country
+\begin{itemize}[leftmargin=6em]
+    \item [20\_\_ -- 20\_\_] Ph.D. in subject, ETH Zurich, Zurich, Switzerland
+    \item [20\_\_ -- 20\_\_] M.Sc. in subject, university, city, country
+\end{itemize}
+\end{document}
