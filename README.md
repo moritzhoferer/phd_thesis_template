@@ -8,4 +8,4 @@ In the first pace, this made to create a version that is viewed on a screen and 
 
 There are some issues. I am happy if you can help fix them.
 
-* The ``chapterabstract'' environment should not have any inden in the first line, but there is a little one.
+* The "chapterabstract" environment should not have any indent in the first line, but there is a little one.
